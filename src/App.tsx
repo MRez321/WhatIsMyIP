@@ -20,7 +20,7 @@ export default function App() {
   // Theme state
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('traceip_theme');
+      const saved = localStorage.getItem('whatismyip_theme');
       if (saved) return saved === 'dark';
       return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
@@ -46,10 +46,10 @@ export default function App() {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('traceip_theme', 'dark');
+      localStorage.setItem('whatismyip_theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('traceip_theme', 'light');
+      localStorage.setItem('whatismyip_theme', 'light');
     }
   }, [darkMode]);
 
@@ -286,7 +286,7 @@ export default function App() {
                     Combines Vite React static compilation and a statically linked Go binary into an Alpine container image smaller than 25MB with non-root security.
                   </p>
                   <pre className="font-mono text-[11px] bg-slate-900 text-slate-200 p-2.5 rounded overflow-x-auto">
-                    <code>{`docker compose up -d\n# Or manual build:\ndocker build -t traceip .\ndocker run -d -p 8080:8080 traceip`}</code>
+                    <code>{`docker compose up -d\n# Or manual build:\ndocker build -t whatismyip .\ndocker run -d -p 8080:8080 whatismyip`}</code>
                   </pre>
                 </div>
               </div>

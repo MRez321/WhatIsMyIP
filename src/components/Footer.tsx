@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({
     <footer className="px-4 md:px-8 py-2.5 sm:py-0 sm:h-12 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-[#0c121e]/50 backdrop-blur-md text-xs text-slate-500 dark:text-slate-400 shrink-0">
       {/* Left zone: System status */}
       <div className="flex items-center gap-2">
-        <span className="font-medium text-slate-700 dark:text-slate-300">TraceIP Engine</span>
+        <span className="font-medium text-slate-700 dark:text-slate-300">WhatIsMyIP Engine</span>
         <span aria-hidden="true">·</span>
         <span>Go Backend + Docker</span>
         <span aria-hidden="true" className="hidden sm:inline">·</span>

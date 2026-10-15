@@ -1,5 +1,5 @@
 /**
- * 100% Localized Node.js & Express server for TraceIP.
+ * 100% Localized Node.js & Express server for WhatIsMyIP.
  * Powered completely by built-in local GeoIP & ASN database and local socket inspection.
  * Zero external API dependencies, zero outbound tracker calls.
  */
@@ -198,7 +198,7 @@ async function startServer() {
 
   const server = http.createServer(app);
   server.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 TraceIP localized server listening on http://0.0.0.0:${PORT}`);
+    console.log(`🚀 WhatIsMyIP localized server listening on http://0.0.0.0:${PORT}`);
   });
 }
 

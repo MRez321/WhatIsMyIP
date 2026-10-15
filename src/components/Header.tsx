@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="w-8 h-8 rounded-lg bg-[#fbb12f] flex items-center justify-center text-slate-950 font-black shadow-xs">
             <Globe className="w-4 h-4 stroke-[2.5]" />
           </div>
-          <span className="font-bold">TraceIP</span>
+          <span className="font-bold">WhatIsMyIP</span>
         </a>
         {isCustomLookup && (
           <button

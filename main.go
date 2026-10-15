@@ -1,4 +1,4 @@
-// Package main implements TraceIP, a high-performance, 100% localized and self-contained
+// Package main implements WhatIsMyIP, a high-performance, 100% localized and self-contained
 // network intelligence and geolocation service written in pure Go.
 // Operates with zero external API dependencies, air-gapped readiness, and in-memory caching.
 package main
@@ -163,7 +163,7 @@ func main() {
 		IdleTimeout:  60 * time.Second,
 	}
 
-	log.Printf("⚡ TraceIP localized high-performance Go backend running on port %s", port)
+	log.Printf("⚡ WhatIsMyIP localized high-performance Go backend running on port %s", port)
 	log.Printf("Serving static frontend assets from %s", staticDir)
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		log.Fatalf("Server failed: %v", err)

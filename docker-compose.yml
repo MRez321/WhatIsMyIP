@@ -1,10 +1,10 @@
 services:
-  traceip:
+  whatismyip:
     build:
       context: .
       dockerfile: Dockerfile
-    image: traceip:latest
-    container_name: traceip-app
+    image: whatismyip:latest
+    container_name: whatismyip-app
     restart: unless-stopped
     ports:
       - "${PORT:-8080}:8080"

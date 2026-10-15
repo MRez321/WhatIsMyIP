@@ -26,12 +26,12 @@ export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose 
       key: 'docker-compose',
       title: 'Docker Compose Deployment (Fastest)',
       cmd: 'docker compose up -d',
-      desc: 'Starts TraceIP in the background on port 8080 with auto-restart & resource limits.',
+      desc: 'Starts WhatIsMyIP in the background on port 8080 with auto-restart & resource limits.',
     },
     {
       key: 'docker-build',
       title: 'Manual Multi-Stage Docker Build',
-      cmd: 'docker build -t traceip .\ndocker run -d -p 8080:8080 --name traceip traceip',
+      cmd: 'docker build -t whatismyip .\ndocker run -d -p 8080:8080 --name whatismyip whatismyip',
       desc: 'Builds the React frontend and compiles the static Go binary into an ultra-lean Alpine container (<25MB).',
     },
     {

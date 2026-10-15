@@ -1,6 +1,6 @@
-# TraceIP - Network & Geolocation Intelligence Service
+# WhatIsMyIP - Network & Geolocation Intelligence Service
 
-TraceIP is a high-performance, 100% localized IP detection, geolocation mapping, and network intelligence platform. It features an ultra-lean Go backend, a modern React single-page dashboard styled in `#fbb12f` (warm golden amber) with dark/light theme switching, and sub-millisecond edge lookups with zero external API dependencies.
+WhatIsMyIP is a high-performance, 100% localized IP detection, geolocation mapping, and network intelligence platform. It features an ultra-lean Go backend, a modern React single-page dashboard styled in `#fbb12f` (warm golden amber) with dark/light theme switching, and sub-millisecond edge lookups with zero external API dependencies.
 
 ## Key Highlights
 
@@ -36,17 +36,17 @@ docker compose down
 
 ```bash
 # Build the hardened multi-stage image (< 25MB)
-docker build -t traceip:latest .
+docker build -t whatismyip:latest .
 
 # Run the container
-docker run -d -p 8080:8080 --name traceip traceip:latest
+docker run -d -p 8080:8080 --name whatismyip whatismyip:latest
 ```
 
 ---
 
 ## Local Development Setup
 
-TraceIP supports development with both Node.js/Express dev server (with Vite) and native Go:
+WhatIsMyIP supports development with both Node.js/Express dev server (with Vite) and native Go:
 
 ### Option A: Node.js / Vite Development
 
@@ -77,7 +77,7 @@ The Go server serves the static frontend from `./dist` and powers the REST API o
 
 ## REST API Reference
 
-TraceIP exposes clean, JSON-based REST endpoints with zero external calls:
+WhatIsMyIP exposes clean, JSON-based REST endpoints with zero external calls:
 
 ### 1. Detect Client IP (IPv4 & IPv6)
 
