@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sun, Moon, RefreshCw, Search, Terminal, Activity, Globe } from 'lucide-react';
+import logoWebp from '../assets/logo.webp';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -37,9 +38,11 @@ export const Header: React.FC<HeaderProps> = ({
           }}
           className="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold text-lg tracking-tight hover:opacity-90 transition-opacity whitespace-nowrap"
         >
-          <div className="w-8 h-8 rounded-lg bg-[#fbb12f] flex items-center justify-center text-slate-950 font-black shadow-xs">
-            <Globe className="w-4 h-4 stroke-[2.5]" />
-          </div>
+          <img
+            src={logoWebp}
+            alt="WhatIsMyIP Logo"
+            className="w-8 h-8 rounded-lg shadow-xs object-cover"
+          />
           <span className="font-bold">WhatIsMyIP</span>
         </a>
         {isCustomLookup && (

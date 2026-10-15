@@ -33,7 +33,9 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="flex items-center gap-2">
         <span className="font-medium text-slate-700 dark:text-slate-300">WhatIsMyIP Engine</span>
         <span aria-hidden="true">·</span>
-        <span>Go Backend + Docker</span>
+        <span>All rights reserved</span>
+        <span aria-hidden="true" className="hidden sm:inline">·</span>
+        <span className="hidden sm:inline">Go Backend + Docker</span>
         <span aria-hidden="true" className="hidden sm:inline">·</span>
         <span className="hidden sm:inline">Ultra-Lightweight</span>
       </div>
@@ -41,7 +43,6 @@ export const Footer: React.FC<FooterProps> = ({
       {/* Middle zone: Keyboard hints */}
       <div className="hidden lg:flex items-center gap-3 text-[11px] text-slate-400 dark:text-slate-500">
         <span>Press <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-mono text-[10px]">⌘K</kbd> to lookup</span>
-        <span>Press <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-mono text-[10px]">C</kbd> to copy IP</span>
       </div>
 
       {/* Right zone: Actions */}
