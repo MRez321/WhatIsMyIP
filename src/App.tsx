@@ -283,7 +283,7 @@ export default function App() {
                     <span>Multi-Stage Ultra-Lean Docker</span>
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
-                    Combines Vite React static compilation and a statically linked Go binary into an Alpine container image smaller than 25MB with non-root security.
+                    Combines Vite React static compilation and a statically linked Go binary into an Alpine container image under 40MB with non-root security.
                   </p>
                   <pre className="font-mono text-[11px] bg-slate-900 text-slate-200 p-2.5 rounded overflow-x-auto">
                     <code>{`docker compose up -d\n# Or manual build:\ndocker build -t whatismyip .\ndocker run -d -p 8080:8080 whatismyip`}</code>

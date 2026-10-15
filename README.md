@@ -11,7 +11,7 @@ WhatIsMyIP is a high-performance, 100% localized IP detection, geolocation mappi
 - **ISP & Autonomous System Intelligence**: Internet Service Provider, ASN, AS Organization, and Connection Classification.
 - **Real-Time Network Diagnostics**: Edge socket roundtrip latency meter (ping), HTTP protocol version, TLS encryption status, and client platform detection.
 - **High-Performance Go Backend**: Pure Go standard library HTTP server (`net/http`) with in-memory TTL caching and zero external runtime dependencies.
-- **Containerized Deployment**: Multi-stage Dockerfile producing a hardened, non-root Alpine container under 25MB, with Docker Compose readiness.
+- **Containerized Deployment**: Multi-stage Dockerfile producing a hardened, non-root Alpine container under 40MB, with Docker Compose readiness.
 
 ---
 
@@ -35,7 +35,10 @@ docker compose down
 ### 2. Manual Multi-Stage Docker Build
 
 ```bash
-# Build the hardened multi-stage image (< 25MB)
+# Build the hardened multi-stage image
+./scripts/build.sh
+
+# Option B: Manual build
 docker build -t whatismyip:latest .
 
 # Run the container

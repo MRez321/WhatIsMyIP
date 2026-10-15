@@ -32,7 +32,7 @@ export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose 
       key: 'docker-build',
       title: 'Manual Multi-Stage Docker Build',
       cmd: 'docker build -t whatismyip .\ndocker run -d -p 8080:8080 --name whatismyip whatismyip',
-      desc: 'Builds the React frontend and compiles the static Go binary into an ultra-lean Alpine container (<25MB).',
+      desc: 'Builds the React frontend and compiles the static Go binary into an ultra-lean Alpine container (~36MB).',
     },
     {
       key: 'curl-ip',
@@ -96,7 +96,7 @@ export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose 
             </div>
             <div className="bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800/60">
               <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">Image Size</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200">&lt; 25MB Hardened</span>
+              <span className="font-semibold text-slate-800 dark:text-slate-200">&lt; 40MB Hardened</span>
             </div>
             <div className="bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800/60">
               <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">In-Memory Cache</span>
