@@ -1,0 +1,6 @@
+{
+  "name": "TraceIP - Network & Geolocation Intelligence",
+  "description": "High-performance IP detection, ISP intelligence, geolocation mapping, and real-time network diagnostics in a sleek single-page dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
