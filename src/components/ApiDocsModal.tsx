@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { Terminal, Copy, Check, X, Container, Cpu, Layers } from 'lucide-react';
+import { Terminal, Copy, Check, X } from 'lucide-react';
 
-interface ApiDockerModalProps {
+interface ApiDocsModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose }) => {
+export const ApiDocsModal: React.FC<ApiDocsModalProps> = ({ isOpen, onClose }) => {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -22,35 +22,25 @@ export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose 
     }
   };
 
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+
   const snippets = [
-    {
-      key: 'docker-compose',
-      title: 'Docker Compose Deployment (Fastest)',
-      cmd: 'docker compose up -d',
-      desc: 'Starts WhatIsMyIP in the background on port 8080 with auto-restart & resource limits.',
-    },
-    {
-      key: 'docker-build',
-      title: 'Manual Multi-Stage Docker Build',
-      cmd: 'docker build -t whatismyip .\ndocker run -d -p 8080:8080 --name whatismyip whatismyip',
-      desc: 'Builds the React frontend and compiles the static Go binary into an ultra-lean Alpine container (~36MB).',
-    },
     {
       key: 'curl-ip',
       title: 'Fetch Client IP (JSON)',
-      cmd: 'curl -s https://localhost:8080/api/ip | jq .',
+      cmd: `curl -s ${baseUrl}/api/ip | jq .`,
       desc: 'Returns detected public client IP, version (IPv4/IPv6), and timestamp.',
     },
     {
       key: 'curl-lookup',
       title: 'Inspect Target IP or Hostname',
-      cmd: 'curl -s "https://localhost:8080/api/lookup?ip=1.1.1.1" | jq .',
+      cmd: `curl -s "${baseUrl}/api/lookup?ip=1.1.1.1" | jq .`,
       desc: 'Returns complete Geolocation, ISP, Autonomous System (ASN), and Reverse DNS PTR record.',
     },
     {
       key: 'curl-diag',
       title: 'Edge Network Diagnostics',
-      cmd: 'curl -s https://localhost:8080/api/diagnostics | jq .',
+      cmd: `curl -s ${baseUrl}/api/diagnostics | jq .`,
       desc: 'Returns client socket protocol, TLS status, headers, and server region.',
     },
   ];
@@ -72,14 +62,14 @@ export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose 
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-[#fbb12f]/15 text-amber-900 dark:text-[#fbb12f] flex items-center justify-center">
-              <Container className="w-4 h-4 text-[#fbb12f]" />
+              <Terminal className="w-4 h-4 text-[#fbb12f]" />
             </div>
             <div>
               <h3 id="api-modal-title" className="text-sm font-semibold text-slate-900 dark:text-white">
-                Docker & High-Performance Go API
+                API Docs
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                100% localized containerized deployment & seamless REST integration
+                REST API endpoints with 100% localized GeoIP intelligence
               </p>
             </div>
           </div>
@@ -95,21 +85,7 @@ export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose 
         {/* Content list */}
         <div className="p-6 overflow-y-auto space-y-4 text-xs">
           {/* Architecture badges */}
-          <div className="grid grid-cols-3 gap-2 pb-2">
-            <div className="bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800/60">
-              <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">Go Backend</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200">Zero Dependencies</span>
-            </div>
-            <div className="bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800/60">
-              <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">Image Size</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200">&lt; 40MB Hardened</span>
-            </div>
-            <div className="bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800/60">
-              <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">In-Memory Cache</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200">Sub-ms Retrieval</span>
-            </div>
-          </div>
-
+          
           {snippets.map((snip) => (
             <div
               key={snip.key}

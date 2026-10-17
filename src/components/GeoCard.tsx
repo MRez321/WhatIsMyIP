@@ -67,7 +67,7 @@ export const GeoCard: React.FC<GeoCardProps> = ({ data }) => {
           <div className="text-xl font-bold text-slate-900 dark:text-white flex items-baseline">
             <span>{data.city || 'Unknown City'}</span>
             {data.region && (
-              <span className="text-sm font-normal text-slate-500 dark:text-slate-400 ml-1">
+              <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400 ml-1">
                 , {data.region}
               </span>
             )}

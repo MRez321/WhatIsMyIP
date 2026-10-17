@@ -10,7 +10,7 @@ import { GeoCard } from './components/GeoCard.tsx';
 import { ISPCard } from './components/ISPCard.tsx';
 import { DiagnosticsCard } from './components/DiagnosticsCard.tsx';
 import { LookupModal } from './components/LookupModal.tsx';
-import { ApiDockerModal } from './components/ApiDockerModal.tsx';
+import { ApiDocsModal } from './components/ApiDocsModal.tsx';
 import { Footer } from './components/Footer.tsx';
 import { NetworkData, DiagnosticsData, PingResult } from './types/index.ts';
 import { fetchNetworkInfo, measurePing, fetchDiagnostics } from './services/api.ts';
@@ -37,7 +37,7 @@ export default function App() {
 
   // Modals
   const [isLookupOpen, setIsLookupOpen] = useState(false);
-  const [isDockerModalOpen, setIsDockerModalOpen] = useState(false);
+  const [isApiModalOpen, setIsApiModalOpen] = useState(false);
 
   // Sync dark mode class to html element
   useEffect(() => {
@@ -128,7 +128,7 @@ export default function App() {
       />
 
       {/* Main Content — single scrollable page */}
-      <main className="flex-1 px-4 md:px-8 py-4 flex flex-col max-w-7xl mx-auto w-full">
+      <main className="flex-1 px-4 md:px-8 py-4 pb-16 flex flex-col max-w-7xl mx-auto w-full">
         {isLoading && !networkData ? (
           /* Loading Skeleton */
           <div className="space-y-4 animate-pulse w-full">
@@ -251,7 +251,7 @@ export default function App() {
       {/* Footer */}
       <Footer
         data={networkData}
-        onOpenDockerModal={() => setIsDockerModalOpen(true)}
+        onOpenApiModal={() => setIsApiModalOpen(true)}
         onOpenLookupModal={() => setIsLookupOpen(true)}
       />
 
@@ -263,9 +263,9 @@ export default function App() {
         currentIP={networkData?.ip || ''}
       />
 
-      <ApiDockerModal
-        isOpen={isDockerModalOpen}
-        onClose={() => setIsDockerModalOpen(false)}
+      <ApiDocsModal
+        isOpen={isApiModalOpen}
+        onClose={() => setIsApiModalOpen(false)}
       />
     </div>
   );

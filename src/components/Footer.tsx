@@ -5,13 +5,13 @@ import logoWebp from '../assets/logo.webp';
 
 interface FooterProps {
   data: NetworkData | null;
-  onOpenDockerModal: () => void;
+  onOpenApiModal: () => void;
   onOpenLookupModal: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   data,
-  onOpenDockerModal,
+  onOpenApiModal,
   onOpenLookupModal,
 }) => {
   const [copiedAll, setCopiedAll] = useState(false);
@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="px-4 md:px-8 py-2.5 sm:py-0 sm:h-12 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-[#0c121e]/50 backdrop-blur-md text-xs text-slate-500 dark:text-slate-400 shrink-0">
+    <footer className="fixed inset-x-0 bottom-0 z-20 w-full px-4 md:px-8 py-2.5 sm:py-0 sm:h-12 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-[#0c121e]/50 backdrop-blur-md text-xs text-slate-500 dark:text-slate-400 shrink-0">
       {/* Left zone: System status */}
       <div className="relative flex items-center gap-2">
         <img
@@ -74,11 +74,11 @@ export const Footer: React.FC<FooterProps> = ({
         <span aria-hidden="true">·</span>
 
         <button
-          onClick={onOpenDockerModal}
+          onClick={onOpenApiModal}
           className="text-[#fbb12f] hover:underline flex items-center gap-1 cursor-pointer font-medium"
         >
           <Terminal className="w-3.5 h-3.5" />
-          <span>API / Docker Docs</span>
+          <span>API Docs</span>
         </button>
       </div>
     </footer>
