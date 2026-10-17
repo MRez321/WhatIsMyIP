@@ -1,0 +1,42 @@
+image: "$NEXUS_REGISTRY/library/docker:29-cli"
+
+stages:
+  - build
+
+variables:
+  # Push to NEXUS_REGISTRY, with the Git tag as the Docker image version.
+  IMAGE_NAME: "$NEXUS_REGISTRY/WhatIsMyIP"
+
+build_and_push:
+  stage: build
+
+  services:
+    - name: "$NEXUS_REGISTRY/library/docker:29-dind"
+
+  rules:
+    - if: '$CI_COMMIT_TAG'
+      exists:
+        - Dockerfile
+    - when: never
+
+  script:
+    - |
+      set -eu
+
+      : "${NEXUS_REGISTRY:?NEXUS_REGISTRY must be set}"
+      : "${NEXUS_USERNAME:?NEXUS_USERNAME must be set}"
+      : "${NEXUS_PASSWORD:?NEXUS_PASSWORD must be set}"
+      : "${CI_COMMIT_TAG:?This job must run from a Git tag}"
+
+      IMAGE="$NEXUS_REGISTRY/WhatIsMyIP:$CI_COMMIT_TAG"
+
+      printf '%s' "$NEXUS_PASSWORD" |
+        docker login "$NEXUS_REGISTRY" \
+          --username "$NEXUS_USERNAME" \
+          --password-stdin
+
+      docker info
+      docker build --pull --tag "$IMAGE" .
+      docker push "$IMAGE"
+
+      echo "Pushed $IMAGE"
