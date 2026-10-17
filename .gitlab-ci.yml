@@ -24,6 +24,7 @@ build_and_push:
       set -eu
 
       : "${NEXUS_REGISTRY:?NEXUS_REGISTRY must be set}"
+      : "${NEXUS_REGISTRY_NPM:?NEXUS_REGISTRY_NPM must be set}"
       : "${NEXUS_USERNAME:?NEXUS_USERNAME must be set}"
       : "${NEXUS_PASSWORD:?NEXUS_PASSWORD must be set}"
       : "${CI_COMMIT_TAG:?This job must run from a Git tag}"
@@ -36,7 +37,12 @@ build_and_push:
           --password-stdin
 
       docker info
-      docker build --pull --tag "$IMAGE" .
+      docker build \
+        --pull \
+        --build-arg "NPM_CONFIG_REGISTRY=$NEXUS_REGISTRY_NPM" \
+        --tag "$IMAGE" \
+        .
+      
       docker push "$IMAGE"
 
       echo "Pushed $IMAGE"
