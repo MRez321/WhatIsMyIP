@@ -1,12 +1,10 @@
 import React from 'react';
-import { Sun, Moon, RefreshCw, Search, Terminal, Activity, Globe } from 'lucide-react';
+import { Sun, Moon, RefreshCw, Search } from 'lucide-react';
 import logoWebp from '../assets/logo.webp';
 
 interface HeaderProps {
   darkMode: boolean;
   onToggleTheme: () => void;
-  activeTab: 'overview' | 'diagnostics' | 'docker';
-  onSelectTab: (tab: 'overview' | 'diagnostics' | 'docker') => void;
   onRefresh: () => void;
   isLoading: boolean;
   onOpenLookup: () => void;
@@ -17,8 +15,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   darkMode,
   onToggleTheme,
-  activeTab,
-  onSelectTab,
   onRefresh,
   isLoading,
   onOpenLookup,
@@ -34,7 +30,6 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={(e) => {
             e.preventDefault();
             onResetToMyIP();
-            onSelectTab('overview');
           }}
           className="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold text-lg tracking-tight hover:opacity-90 transition-opacity whitespace-nowrap"
         >
@@ -55,47 +50,10 @@ export const Header: React.FC<HeaderProps> = ({
         )}
       </div>
 
-      {/* Zone 2: Navigation & Diagnostic Mode tabs */}
-      <nav aria-label="Main Navigation" className="flex items-center gap-1 sm:gap-2 bg-slate-100 dark:bg-slate-800/60 p-1 rounded-lg">
-        <button
-          onClick={() => onSelectTab('overview')}
-          aria-label="IP & Geolocation Overview"
-          className={`px-2 sm:px-3 py-1.5 text-xs font-semibold rounded-md transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-            activeTab === 'overview'
-              ? 'bg-[#fbb12f] text-slate-950 shadow-xs'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-          }`}
-        >
-          <Globe className="w-3.5 h-3.5" />
-          <span className="hidden md:inline">IP & Geolocation</span>
-        </button>
-
-        <button
-          onClick={() => onSelectTab('diagnostics')}
-          aria-label="Network Diagnostics"
-          className={`px-2 sm:px-3 py-1.5 text-xs font-semibold rounded-md transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-            activeTab === 'diagnostics'
-              ? 'bg-[#fbb12f] text-slate-950 shadow-xs'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-          }`}
-        >
-          <Activity className="w-3.5 h-3.5" />
-          <span className="hidden md:inline">Diagnostics</span>
-        </button>
-
-        <button
-          onClick={() => onSelectTab('docker')}
-          aria-label="API & Docker Guide"
-          className={`px-2 sm:px-3 py-1.5 text-xs font-semibold rounded-md transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
-            activeTab === 'docker'
-              ? 'bg-[#fbb12f] text-slate-950 shadow-xs'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-          }`}
-        >
-          <Terminal className="w-3.5 h-3.5" />
-          <span className="hidden md:inline">API & Docker</span>
-        </button>
-      </nav>
+      {/* Page Title (replaces nav menu) */}
+      <h1 className="hidden sm:block text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+        Network Intelligence
+      </h1>
 
       {/* Zone 3: Interactive Actions */}
       <div className="flex items-center gap-2">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Terminal, Shield, Download, Check, Copy } from 'lucide-react';
+import { Terminal, Check, Copy, Copyright } from 'lucide-react';
 import { NetworkData } from '../types/index.ts';
+import logoWebp from '../assets/logo.webp';
 
 interface FooterProps {
   data: NetworkData | null;
@@ -30,19 +31,24 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer className="px-4 md:px-8 py-2.5 sm:py-0 sm:h-12 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-[#0c121e]/50 backdrop-blur-md text-xs text-slate-500 dark:text-slate-400 shrink-0">
       {/* Left zone: System status */}
-      <div className="flex items-center gap-2">
-        <span className="font-medium text-slate-700 dark:text-slate-300">WhatIsMyIP Engine</span>
+      <div className="relative flex items-center gap-2">
+        <img
+          src={logoWebp}
+          alt=""
+          aria-hidden="true"
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-8 h-8 opacity-[0.09] dark:opacity-[0.14] pointer-events-none"
+        />
+        <span className="relative font-medium text-slate-700 dark:text-slate-300">WhatIsMyIP</span>
         <span aria-hidden="true">·</span>
-        <span>All rights reserved</span>
-        <span aria-hidden="true" className="hidden sm:inline">·</span>
-        <span className="hidden sm:inline">Go Backend + Docker</span>
-        <span aria-hidden="true" className="hidden sm:inline">·</span>
-        <span className="hidden sm:inline">Ultra-Lightweight</span>
+        <span className="flex items-center gap-1">
+          <Copyright className="w-3 h-3" />
+          <span>All rights reserved</span>
+        </span>
       </div>
 
       {/* Middle zone: Keyboard hints */}
       <div className="hidden lg:flex items-center gap-3 text-[11px] text-slate-400 dark:text-slate-500">
-        <span>Press <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-mono text-[10px]">⌘K</kbd> to lookup</span>
+        <span>Press <kbd className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-mono text-[10px]">ctrl+K</kbd> to lookup</span>
       </div>
 
       {/* Right zone: Actions */}

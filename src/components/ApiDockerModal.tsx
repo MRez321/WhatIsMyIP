@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Terminal, Copy, Check, X, Container, Cpu, Layers } from 'lucide-react';
 
 interface ApiDockerModalProps {
@@ -8,6 +8,7 @@ interface ApiDockerModalProps {
 
 export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose }) => {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   if (!isOpen) return null;
 
@@ -55,8 +56,13 @@ export const ApiDockerModal: React.FC<ApiDockerModalProps> = ({ isOpen, onClose 
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 dark:bg-black/70 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 dark:bg-black/70 backdrop-blur-xs animate-in fade-in duration-150"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div
+        ref={dialogRef}
         className="w-full max-w-2xl bg-white dark:bg-[#111827] rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[85vh] flex flex-col"
         role="dialog"
         aria-modal="true"
